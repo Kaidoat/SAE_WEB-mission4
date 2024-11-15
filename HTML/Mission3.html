@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mission 3</title>
+  <link rel="icon" type="image/png" href="/assets/img/logo_sans_nom.png">
+  <link rel="stylesheet" href="../css/Mission3.css">
+</head>
+<body>
+
+<nav id="link">
+  <a href="accueil.html"><img id="acc" src="../assets/img/logo_sans_nom.png" alt="Description de l'image" ></a>
+  <a  href="Mission1.html">Mission 1</a>
+  <a  href="Mission2.html">Mission 2</a>
+  <a id="page" href="Mission3.html">Mission 3</a>
+  <a href="Conclusion.html">Conclusion</a>
+
+</nav>
+
+<main>
+  <!-- Introduction -->
+  <section id="introduction">
+    <h1>Mission 3 : Exploitation de la base de données KDou</h1>
+    <p>Cette mission consistait à exploiter la base de données KDou avec le langage SQL. </p>
+  </section>
+  </main>
+
+<!-- Indicateur 1 a) -->
+<section class="indicateur">
+  <h2 class="questions">Indicateur 1) a) : Desserts/boissons</h2>
+  <p><strong>Énoncé :</strong> Combien y a-t-il des produits correspondants vendus 50€ ou plus ? On veut les connaître
+    avec leur pays d’origine.</p>
+  <p><strong>Construction :</strong> Cette requête permet de montrer des produits de types boissons et desserts qui valent au dessus
+    de 50 euros et cela peut être interpréter par une demande de produits venant d’une part de la clientèle plutôt aisée .</p>
+
+  <h3>Requête SQL</h3>
+  <pre>
+SELECT DISTINCT p.NomProd, p.PrixUnit, c.CodeCateg, f.Pays
+FROM Produit AS p, Fournisseur AS f, Categorie AS c
+WHERE c.CodeCateg = p.CodeCateg
+AND f.NoFour = p.NoFour
+AND ( c.CodeCateg =1 OR c.CodeCateg =3)
+AND  p.PrixUnit >=50
+ORDER BY p.PrixUnit DESC;
+  </pre>
+  </table>
+  <img src="../assets/img/Mission3/1)a).png" alt="Capture d'écran des résultats">
+</section>
+
+
+<!-- Indicateur 1)b) -->
+<section class="indicateur">
+  <h2 class="questions">Indicateur 1) b) : Desserts/boissons</h2>
+  <p><strong>Énoncé :</strong> Quels sont les pays de provenance de ces catégories ?</p>
+  <p><strong>Construction :</strong> Cette requête permet de montrer les pays de provenance de ces catégories et donc de
+    montrer les pays les plus exportateurs de ces types de produits . Les noms de certains pays
+    fournisseurs de desserts et de boissons ne sont pas normalisés, entraînant des doublons
+    pour un même pays.</p>
+
+  <h3>Requête SQL</h3>
+  <pre>
+SELECT DISTINCT c.NomCateg, f.Pays
+FROM Produit AS p, Fournisseur AS f, Categorie AS c
+WHERE c.CodeCateg = p.CodeCateg
+AND f.NoFour = p.NoFour
+AND ( c.CodeCateg =1 OR c.CodeCateg =3);
+  </pre>
+  </table>
+  <img src="../assets/img/Mission3/1)b).png" alt="Capture d'écran des résultats">
+
+</section>
+
+<!-- Indicateur 2)a) -->
+<section class="indicateur">
+  <h2 class="questions">Indicateur 2) a) : L'offre de Kdou </h2>
+  <p><strong>Énoncé :</strong> Donner des informations sur les fournisseurs qui proposent des produits qui ne sont pas
+    commandés actuellement ?
+  </p>
+  <p><strong>Construction :</strong> Voici les fournisseurs qui offrent des produits, mais aucun client n'a passé de commande
+    pour ces articles.</p>
+
+  <h3>Requête SQL</h3>
+  <pre>
+SELECT DISTINCT Fournisseur.Pays, Fournisseur.Societe
+FROM Fournisseur INNER JOIN (Produit LEFT JOIN DetailCommande
+ON Produit.RefProd = DetailCommande.RefProd)
+ON Fournisseur.NoFour = Produit.NoFour
+WHERE (((DetailCommande.RefProd) Is Null));
+  </pre>
+  </table>
+  <img src="../assets/img/Mission3/2)a).png" alt="Capture d'écran des résultats">
+
+</section>
+
+
+<!-- Indicateur 2)c) -->
+<section class="indicateur">
+  <h2 class="questions">Indicateur 2) c) : L'offre de Kdou </h2>
+  <p><strong>Énoncé :</strong> Quels sont les pays qui ont une offre importante de produit ?
+  </p>
+  <p><strong>Construction :</strong> Voici la table et la requête SQL associé permettant de voir les pays ayant une offre
+    importante de produit. On a sélectionné les 5 pays avec l’offre la plus importante de produit</p>
+
+  <h3>Requête SQL</h3>
+  <pre>
+SELECT TOP 5 Fournisseur.Pays, Count(Produit.RefProd) AS NbProd
+FROM Fournisseur INNER JOIN Produit
+ON Fournisseur.NoFour = Produit.NoFour
+GROUP BY Fournisseur.Pays
+ORDER BY Count(Produit.RefProd) DESC;
+
+  </pre>
+  </table>
+  <img src="../assets/img/Mission3/2)c).png" alt="Capture d'écran des résultats">
+
+
+</section>
+
+
+<!-- Indicateur 3)b) -->
+<section class="indicateur">
+  <h2 class="questions">Indicateur 3) b) : Provenance des produits </h2>
+  <p><strong>Énoncé :</strong> Quels fournisseurs vendent uniquement des boissons ou des desserts ?
+  </p>
+  <p><strong>Construction :</strong> Voici la table et la requête SQL associé des fournisseurs qui vendent uniquement des
+    boissons et des desserts</p>
+
+  <h3>Requête SQL</h3>
+  <pre>
+SELECT DISTINCT F.NoFour, F.Contact
+FROM Fournisseur AS F INNER JOIN
+(Categorie AS C INNER JOIN Produit AS P
+ON C.CodeCateg = P.CodeCateg) ON F.NoFour = P.NoFour
+WHERE (((F.NoFour) NOT IN (SELECT P.NoFour
+FROM Produit  P
+INNER JOIN Categorie  C ON P.CodeCateg = C.CodeCateg
+WHERE C.CodeCateg NOT IN (1, 3)
+)));
+
+  </pre>
+  </table>
+  <img src="../assets/img/Mission3/3)b).png" alt="Capture d'écran des résultats">
+
+
+</section>
+
+<!-- Indicateur 3)c) -->
+<section class="indicateur">
+  <h2 class="questions">Indicateur 3) c) : Provenance des produits </h2>
+  <p><strong>Énoncé :</strong> Y en a-t-il qui vendent les deux boissons et desserts ?
+  </p>
+  <p><strong>Construction :</strong> Voici la table ainsi que la requête SQL associé permettant de voir les fournisseurs vendant
+    les boissons et les desserts</p>
+
+  <h3>Requête SQL</h3>
+  <pre>
+SELECT DISTINCT F.NoFour, F.Contact
+FROM Fournisseur AS F INNER JOIN Produit AS P
+ON F.NoFour = P.NoFour
+WHERE (P.CodeCateg IN (1, 3))
+AND F.NoFour NOT IN (
+    SELECT Fournisseur.NoFour
+    FROM Fournisseur
+    INNER JOIN Produit ON Fournisseur.NoFour = Produit.NoFour
+    WHERE Produit.CodeCateg NOT IN (1, 3)
+);
+
+
+  </pre>
+  </table>
+  <img src="../assets/img/Mission3/3)c).png" alt="Capture d'écran des résultats">
+
+
+</section>
+
+
+
+<!-- Indicateur 4)a) -->
+<section class="indicateur">
+  <h2 class="questions">Indicateur 4) a) :  La clientèle de Kdou </h2>
+  <p><strong>Énoncé :</strong> Un client nantais Le verre à soi souhaite savoir quels autres clients nantais
+    commandent aussi des produits en Allemagne pour envisager de futures livraisons
+    groupées.
+  </p>
+  <p><strong>Construction :</strong> Les autres clients nantais commandant des produits d'Allemagne sont identifiés, permettant
+    à "Le verre à soi" d'envisager des livraisons groupées. Voici la table et la requête SQL associé</p>
+
+  <h3>Requête SQL</h3>
+  <pre>
+SELECT DISTINCT C.SocieteCli, C.ContactCli, C.VilleCli, F.Pays
+FROM Client AS C INNER JOIN (Commande AS CM INNER JOIN
+(Fournisseur AS F INNER JOIN (Produit AS P INNER JOIN
+    DetailCommande AS DC ON
+P.RefProd = DC.RefProd) ON F.NoFour = P.NoFour)
+ON CM.NoCom = DC.NoCom)
+ON C.CodeCli = CM.CodeCli
+WHERE ((C.VilleCli LIKE "nant*")
+AND (F.Pays LIKE "*allemagne*")
+AND (C.SocieteCli NOT LIKE "*verre à soi*"));
+  </pre>
+  </table>
+  <img src="../assets/img/Mission3/4)a).png" alt="Capture d'écran des résultats">
+
+
+</section>
+
+
+<!-- Indicateur 4)c) -->
+<section class="indicateur">
+  <h2 class="questions">Indicateur 4) c) : La clientèle de Kdou </h2>
+  <p><strong>Énoncé :</strong> Certains clients n’ont jamais eu la remise la plus importante de 25%. Qui sont-ils ?
+  </p>
+  <p><strong>Construction :</strong> Voici la table et la requête SQL associé permettant d’observer les clients qui n’ont jamais pu
+    bénéficier de la remise de 25%</p>
+
+  <h3>Requête SQL</h3>
+  <pre>
+SELECT C.ContactCli, C.CodeCli
+FROM Client AS C
+WHERE C.CodeCli NOT IN (
+
+SELECT Cmd.CodeCli
+
+FROM Commande Cmd
+
+INNER JOIN DetailCommande DC
+    ON Cmd.NoCom = DC.NoCom
+
+WHERE DC.Remise = 0.25)
+ORDER BY 1;
+
+  </pre>
+  </table>
+  <img src="../assets/img/Mission3/4)c).png" alt="Capture d'écran des résultats">
+
+
+</section>
+
+
+<!-- Requête 1 -->
+<section id="requete-1">
+  <h2 class="questions">Requête 1 (Celthans) : Total des ventes pour chaque client en région parisienne</h2>
+  <p><strong>Objectif :</strong> Calculer le montant total des achats de chaque client situé en région parisienne.</p>
+  <p><strong>Intérêt :</strong> Identifier les clients les plus actifs et rentables pour optimiser les actions commerciales.</p>
+  <h3>Code SQL</h3>
+  <img src="../assets/img/Mission3/code1.png" alt="Code SQL de la requête 1">
+  <h3>Affichage des résultats</h3>
+  <img src="../assets/img/Mission3/affichage1.png" alt="Affichage des résultats pour la requête 1">
+</section>
+
+<!-- Requête 2 -->
+<section id="requete-2">
+  <h2 class="questions">Requête 2 (Fares) : Nombre total de commandes par client</h2>
+  <p><strong>Objectif :</strong> Obtenir le nombre total de commandes passées par chaque client.</p>
+  <p><strong>Intérêt :</strong> Évaluer la fidélité des clients et orienter les stratégies marketing.</p>
+  <h3>Code SQL</h3>
+  <img src="../assets/img/Mission3/code2.png" alt="Code SQL de la requête 2">
+  <h3>Affichage des résultats</h3>
+  <img src="../assets/img/Mission3/affichage2.png" alt="Affichage des résultats pour la requête 2">
+</section>
+
+<!-- Requête 3 -->
+<section id="requete-3">
+  <h2 class="questions">Requête 3 (Ismail) : Produits qui n'ont jamais été commandés</h2>
+  <p><strong>Objectif :</strong> Identifier les produits qui n'ont jamais été commandés.</p>
+  <p><strong>Intérêt :</strong> Optimiser la gestion des stocks et réduire les coûts d'inventaire.</p>
+  <h3>Code SQL</h3>
+  <img src="../assets/img/Mission3/code3.png" alt="Code SQL de la requête 3">
+  <h3>Affichage des résultats</h3>
+  <img src="../assets/img/Mission3/affichage3.png" alt="Affichage des résultats pour la requête 3">
+</section>
+
+<!-- Requête 4 -->
+<section id="requete-4">
+  <h2 class="questions">Requête 4 (Raphaël) : Liste des produits avec un stock faible</h2>
+  <p><strong>Objectif :</strong> Identifier les produits dont le stock est inférieur à 10 unités.</p>
+  <p><strong>Intérêt :</strong> Éviter les ruptures de stock et optimiser la planification des commandes.</p>
+  <h3>Code SQL</h3>
+  <img src="../assets/img/Mission3/code4.png" alt="Code SQL de la requête 4">
+  <h3>Affichage des résultats</h3>
+  <img src="../assets/img/Mission3/affichage4.png" alt="Affichage des résultats pour la requête 4">
+</section>
+
+
+<!-- Conclusion -->
+<section id="conclusion">
+  <h2>Conclusion</h2>
+  <p>La mission 3 nous a permit de consolider nos connaissances que nous avions de la base de Kdou
+    et du langage SQL de manière générale. Elle nous a également permis de comprendre comment
+  interpreter ses informations dans le cadre d'une entreprise et de sa gestion. </p>
+</section>
+
+
+</body>
+<footer>
+  <p>
+    En collaboration avec KDou. | © 2024
+  </p>
+  <a  id ="zip" href="/assets/img/DOSSIER_COMPTE_Rendu.rar" download="DOSSIER_COMPTE_Rendu.zip">
+    Cliquez ici pour télécharger le dossier ZIP de toutes les missions
+  </a>
+</footer>
+</html>

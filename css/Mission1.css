@@ -1,0 +1,300 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;800&display=swap');
+
+.poppins-medium {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.poppins-extrabold {
+  font-family: "Poppins", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+}
+
+/*Couleurs et types de texte*/
+
+*{
+  font-family: "Poppins", sans-serif;
+}
+.questions{
+  font-size:25px;
+  font-weight:bold;
+  color: red;
+}
+
+.enonceQues{
+  font-size:20px;
+  font-weight:bold;
+}
+
+.reponsesIntro{
+  font-size:16px;
+  font-weight: bold;
+}
+
+.bold{
+  font-weight: bold;
+}
+
+.bold-underline, .produits{
+  font-weight: bold;
+  text-decoration: underline;
+}
+/* Style global de la barre de navigation */
+
+
+nav {
+  background-color: #89BA4E;
+  font-size: 1.25rem; /* Taille de la police en rem pour qu’elle soit scalable */
+  padding: 0.75rem; /* Padding en rem pour ajustement automatique */
+  border: 0;
+  display: flex;
+  width: 100%;
+  box-sizing: border-box;
+  justify-content: center;
+  position: relative; /* Nécessaire pour l'élément #acc en position absolue */
+}
+
+/* Conteneur des liens de navigation */
+#link {
+  display: flex;
+  gap: 1rem; /* Espacement entre les liens en rem */
+}
+
+#link > a {
+  color: #448D76;
+  text-decoration: none;
+  padding: 0.5rem 1rem; /* Padding en rem pour ajustement fluide */
+}
+
+/* Style pour le titre dans la navigation */
+#titreM1 {
+  padding: 0.5rem 1.5rem 1rem 0; /* Padding en rem pour plus de flexibilité */
+}
+
+/* Style pour le nom de la page actuelle dans la navbar */
+#link > #page {
+  padding: 0.75rem 1rem; /* Ajustement du padding */
+  color: #FDFEFB;
+  border-bottom: 0.2rem solid #FDFEFB; /* Bordure en rem */
+}
+
+/* Style global du body */
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  font-family: "Source Sans", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #EFF7DE;
+}
+
+/* Style pour les sections et les en-têtes */
+section header {
+  font-size: 1.5em;
+  font-weight: bold;
+  text-align: left;
+}
+
+section {
+  width: 90%;
+  padding: 1rem;
+}
+
+section > article {
+  width: 90%;
+  margin: 1.5rem auto;
+  padding: 0.5rem;
+  border: 1px solid rgb(200, 200, 200);
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+.transition{
+  text-align: center;
+  font-style: italic;
+}
+
+.BilanAMC {
+  width: 90%;
+  margin: 1.5rem auto;
+  padding: 1rem;
+  border: 1px solid rgb(200, 200, 200);
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+article {
+  width: 90%;
+  overflow-x: hidden;
+}
+
+#zip{
+  color : #448D76;
+}
+.alerte {
+  width:50%;
+  margin: 0.33em auto;
+  padding: 0.5em 1.5em 0.75em 1.5em ;
+  text-align: center;
+  background-color: rgba(255, 150, 150, 0.75);
+  border: 1px solid darkred ;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px; /* Arrondit les coins du tableau */
+  overflow: hidden;
+}
+
+#logo_alerte {
+  font-size: 1.25em;
+}
+
+footer{
+  background-color: #89BA4E; /* Même couleur de fond que la barre de navigation */
+  color: #448D76;
+  padding: 1.25rem 2%; /* Padding en rem pour s’adapter à toutes les tailles d’écrans */
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  font-size: 1rem;
+}
+
+
+
+
+.client-table thead {
+  background-color: #89BA4E;
+  color: #fff;
+}
+
+
+.client-table tbody tr:hover {
+  background-color: #f9f9f9;
+}
+
+
+.client-table {
+  flex: auto;
+  width: 100%; /* Toujours occuper 100% de l'espace du conteneur parent */
+  border-collapse: collapse; /* Élimine les espaces entre les bordures des cellules */
+  table-layout: auto; /* Force une largeur fixe pour chaque colonne */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.client-table th, .client-table td {
+  padding: 0.5rem; /* Réduction du padding pour mieux s'adapter */
+  border: 1px solid #ddd;
+  text-align: center;
+  /* Le texte se coupe sur plusieurs lignes si nécessaire */
+}
+
+section img {
+  max-width: 100%;
+  height: auto;
+  margin: 1rem 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+
+
+
+/* Style pour l'élément #acc, image ou logo en position fixe à gauche */
+#acc {
+  position: absolute;
+  left: 2%; /* Distance en % pour s'ajuster à la taille de l'écran */
+  top: 1rem;
+  max-width: 70px; /* Taille maximale pour éviter que l’image soit trop grande */
+  height: auto; /* Maintient le ratio de l'image */
+}
+
+/* Media query pour écrans de taille moyenne et petites tailles */
+@media (max-width: 768px) {
+  nav {
+    padding: 0.5rem;
+    flex-direction: column; /* Stacker les éléments verticalement sur petit écran */
+    align-items: center;
+  }
+
+  #footer-links {
+    flex-direction: column; /* Liens en colonne sur les petits écrans */
+    gap: 0.5rem;
+  }
+
+  footer p {
+    font-size: 0.8rem; /* Réduit légèrement la taille du texte */
+  }
+
+
+
+
+  #link {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  /* Taille des éléments a dans la navbar */
+  #link > a {
+    font-size: 1rem;
+    padding: 0.5rem;
+  }
+
+
+
+
+
+  #acc {
+    left: 10px; /* Réduit l'espacement depuis le bord pour les petits écrans */
+    top: 5px;
+  }
+
+  table{
+    width: 50%;
+    table-layout: revert;
+
+
+  }
+  table th, table td {
+    font-size: 0.8rem;
+  }
+
+}
+
+
+
+
+.client-table {
+  width: 60%;
+  max-width: 600px;
+  border-collapse: collapse;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.client-table thead {
+  background-color: #89BA4E;
+  color: #fff;
+}
+
+.client-table th, .client-table td {
+  padding: 12px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.client-table tbody tr:hover {
+  background-color: #f9f9f9;
+}
+
+table th, table td {
+  border: 1px solid #ddd;
+  padding: 0.75rem;
+  text-align: left;
+}
+
+
+

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mission 2 </title>
+  <link rel="icon" type="image/png" href="/assets/img/logo_sans_nom.png">
+  <link rel="stylesheet" href="../css/Mission2.css">
+</head>
+<body>
+<!-- Barre de navigation -->
+<nav>
+  <a href="accueil.html"><img src="../assets/img/logo_sans_nom.png" alt="Logo" id="acc"></a>
+  <div id="link">
+    <a href="Mission1.html">Mission 1</a>
+    <a id="page" href="Mission2.html" class="active">Mission 2</a>
+    <a href="Mission3.html">Mission 3</a>
+    <a href="Conclusion.html">Conclusion</a>
+  </div>
+</nav>
+
+<!-- Contenu principal -->
+<main>
+  <!-- Introduction -->
+  <section id="introduction">
+    <h1 >Mission 2 : Exploitation de la base de données KDou</h1>
+    <p>Cette mission consistait à exploiter la base de données KDou via une interface low-code. L'objectif était de répondre à plusieurs problématiques grâce à des requêtes spécifiques, en extrayant des indicateurs clés.</p>
+  </section>
+
+  <!-- Indicateur 1 -->
+  <section class="indicateur">
+    <h2 class="questions"> Indicateur 1 : Produits vendus à 50 € ou moins en Italie ou Allemagne</h2>
+    <p><strong>Énoncé :</strong> Identifier les produits provenant d'Italie ou d'Allemagne et vendus à 50 € ou moins.</p>
+    <p><strong>Interprétation :</strong> Ces informations permettent de repérer les offres compétitives de ces pays.</p>
+
+    <h3>Résultats</h3>
+    <table>
+      <thead>
+      <tr>
+        <th>Produit</th>
+        <th>Pays</th>
+        <th>Prix</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>Produit A</td>
+        <td>Italie</td>
+        <td>45 €</td>
+      </tr>
+      <tr>
+        <td>Produit B</td>
+        <td>Allemagne</td>
+        <td>50 €</td>
+      </tr>
+      </tbody>
+    </table>
+    <img src="../assets/img/Mission2/produits_italie_allemagne.png" alt="Résultat de la requête pour l'indicateur 1">
+
+    <h3>Requête SQL</h3>
+    <pre>
+SELECT NomProd, Pays, PrixUnitCli
+FROM Produit
+WHERE (Pays = 'Italie' OR Pays = 'Allemagne') AND PrixUnitCli <= 50;
+      </pre>
+  </section>
+
+  <!-- Indicateur 2 -->
+  <section class="indicateur">
+    <h2 class="questions">Indicateur 2 : Catégories de produits des fournisseurs singapouriens</h2>
+    <p><strong>Énoncé :</strong> Lister les catégories de produits vendus par des fournisseurs basés à Singapour.</p>
+    <p><strong>Interprétation :</strong> Cette information aide à analyser l'offre spécifique de Singapour.</p>
+
+    <h3>Résultats</h3>
+    <ul>
+      <li>Catégorie 1 : Boissons</li>
+      <li>Catégorie 2 : Condiments</li>
+    </ul>
+    <img src="../assets/img/Mission2/categories_singapouriens.png" alt="Résultat de la requête pour l'indicateur 2">
+
+    <h3>Requête SQL</h3>
+    <pre>
+SELECT DISTINCT NomCateg
+FROM Produit
+JOIN Fournisseur ON Produit.NoFour = Fournisseur.NoFour
+WHERE Fournisseur.Pays = 'Singapour';
+      </pre>
+  </section>
+
+  <!-- Indicateur 3 -->
+  <section class="indicateur">
+    <h2 class="questions">Indicateur 3 : Prix moyen, minimum et maximum des produits</h2>
+    <p><strong>Énoncé :</strong> Calculer le prix moyen, le prix minimum et le prix maximum des produits.</p>
+    <p><strong>Interprétation :</strong> Ces statistiques donnent un aperçu général des tarifs des produits de KDou.</p>
+    <p><strong>Résultats :</strong></p>
+    <ul>
+      <li>Prix moyen : 33,54 €</li>
+      <li>Prix minimum : 2,08 €</li>
+      <li>Prix maximum : 320 €</li>
+    </ul>
+    <img src="../assets/img/Mission2/prix_statistiques.png" alt="Graphique des prix pour l'indicateur 3">
+
+    <h3>Requête SQL</h3>
+    <pre>
+SELECT AVG(PrixUnitCli) AS PrixMoyen, MIN(PrixUnitCli) AS PrixMin, MAX(PrixUnitCli) AS PrixMax
+FROM Produit;
+      </pre>
+  </section>
+
+  <!-- Indicateur 4 -->
+  <section class="indicateur">
+    <h2 class="questions">Indicateur 4 : Chiffre d'affaires total généré</h2>
+    <p><strong>Énoncé :</strong> Calculer le chiffre d'affaires total généré par les commandes.</p>
+    <p><strong>Interprétation :</strong> Cet indicateur aide à évaluer la performance commerciale globale.</p>
+    <p><strong>Résultats :</strong> 1 656 539,38 €</p>
+    <img src="../assets/img/Mission2/chiffre_affaires.png" alt="Graphique du chiffre d'affaires pour l'indicateur 4">
+
+    <h3>Requête SQL</h3>
+    <pre>
+SELECT SUM(PrixUnitCli * QteCom * (1 - Remise) + Port) AS ChiffreAffairesTotal
+FROM DétailsCommande;
+      </pre>
+  </section>
+</main>
+
+<!-- Conclusion -->
+<section id="conclusion">
+  <h2>Conclusion</h2>
+  <p>La mission 2 a permis d'identifier des informations stratégiques telles que les offres compétitives, les catégories dominantes, et les performances financières, aidant KDou à optimiser ses décisions commerciales.</p>
+</section>
+
+<!-- Pied de page -->
+<footer>
+  <p>En collaboration avec KDou. | © 2024</p>
+  <a  id ="zip" href="/assets/img/DOSSIER_COMPTE_Rendu.rar" download="DOSSIER_COMPTE_Rendu.zip">
+    Cliquez ici pour télécharger le dossier ZIP de toutes les missions
+  </a>
+</footer>
+</body>
+</html>

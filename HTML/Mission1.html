@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+
+<!-- Fares / mission 1 -->
+
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Mission 1</title>
+  <link rel="icon" type="image/png" href="/assets/img/logo_sans_nom.png">
+  <link rel="stylesheet" href="/css/Mission1.css">
+</head>
+<body>
+
+<nav id="link">
+  <a href="accueil.html"><img id="acc" src="/assets/img/logo_sans_nom.png" alt="Description de l'image"> </a>
+  <a id="page" href="Mission1.html">Mission 1</a>
+  <a href="Mission2.html">Mission 2</a>
+  <a href="Mission3.html">Mission 3</a>
+  <a href="Conclusion.html">Conclusion</a>
+
+</nav>
+<main>
+  <header id="titreM1"><h1> Présentation de la Mission 1 </h1></header>
+</main>
+<section id="Contexte">
+  <article>
+    <header>Contexte</header>
+    <p>
+      Dans la mission 1, nous avons donc découvert en premier lieu KDou, qui est une entreprise de vente en
+      grosses
+      quantités pour professionnels. Avec l'accès à leur base de données, nous devions formuler avec l'aide des
+      propriétés sélectives d'Excel
+      plusieurs requêtes afin de filtrer les clients, produits, fournisseurs, etc. En fonction des consignes et
+      restrictions appliquées.
+    </p>
+    <p>
+      C'est donc avec notre simple logique, nos connaissances antérieures, mais à l'aide de la facilité
+      d'utilisation et de l'intuitivité de
+      Microsoft Excel que nous devions réaliser cette première mission, signant aussi le début des SAE de notre
+      1ère année.
+    </p>
+
+  </article>
+</section>
+<section class="BilanAMC">
+
+  <header>Bilan</header>
+  <p class="transition"> Ce début de SAE n'est pas très compliqué, en effet, les premières questions ne sont que compréhension du tableau
+    Excel ; on nous demande donc d'identifier les clés primaires et étrangères. </p>
+
+  <article id="Q1">
+    <p class="questions"> Question 1 </p>
+    <p class="enonceQues"> "Dans chaque onglet, identifiez quelles sont les colonnes correspondantes ou pouvant
+      correspondre à des clés primaires." </p>
+    <p class="reponsesComplete">
+      <span class="reponsesIntro"> >>>> </span>
+      Une clé primaire est la donnée qui permet d'identifier de manière unique un enregistrement dans
+      une table. Les différentes clés primaires des différentes tables sont les suivantes :
+      - Tout d’abord pour ce qui est de la table “Fournisseur”, la clé primaire est le N°Fournisseur.
+      - Concernant ce qui est de la table “Produit”, la clé primaire est la Réf produit.
+      - La table “Catégorie” a pour clé primaire le code catégorie.
+      - Pour ce qui est de la table “Clientèle”, la clé primaire est le Code Client.
+      - Enfin la table “Commande” a pour la clé primaire est le N°Commande.
+    </p>
+  </article>
+  <article id="Q2">
+    <p class="questions"> Question 2 </p>
+    <p class="enonceQues"> "Dans chaque onglet, identifiez quelles sont les colonnes correspondant à des clés
+      étrangères." </p>
+    <p class="reponsesComplete">
+      <span class="reponsesIntro"> >>>> </span>
+      La clé étrangère fait référence à la clé primaire d’une autre table.
+      Il n’y a aucune clé étrangère dans la table “Fournissseur” ainsi que dans la table “Catégorie”.
+      il n’y pas de clé qui fait référence à la clé primaire d’une autre table.
+      - Dans la table “Produit”, le #N°Fournisseur et le #Code catégorie sont les clés étrangères
+      - Dans la table “Commande”, le #Code client est la clé étrangère.
+      - Dans la table “Détail Commande”, le #N°commande et la #Ref produit sont les clés étrangères.
+    </p>
+  </article>
+
+  <p class="transition"> Ces 2 premières questions étaient donc relativement simples, de la pure analyse de documents qui nous permet
+    d'entrer dans la matière, passons désormais aux "vraies" questions, celles de la manipulation de la base de
+    données. </p>
+
+
+  <article id="Q3a">
+    <p class="questions"> Question 3 </p>
+    <p class = "enonceQues"> "Pour vous entrainer à naviguer dans ces données, on vous demande d’essayer de répondre
+      manuellement aux questions suivantes en étudiant l’extrait fourni :
+      Vous noterez dans le bilan à réaliser vos remarques et/ou vos difficultés." </p>
+
+
+    <p class="transition"> Cette question étant séparées en plusieurs lettres, nous allons donc commencer par la première partie.</p>
+    <p class="questions"> Question 3a. </p>
+    <p class="enonceQues"> "Combien y a-t-il de clients nantais ?" </p>
+    <p class="reponsesComplete">
+      <span class="reponsesIntro"> >>>> </span>
+      On peut observer que dans la relation clientèle. Les clients nantais sont aux nombres de 3.
+      Il suffit de filtrer la colonne de l’attribut “ville” en cochant seulement la ville de Nantes et nous
+      obtenons le résultat ci-dessous.
+    </p> <br> <br>
+    <table class="client-table">
+      <thead>
+      <tr>
+        <th>Code client</th>
+        <th>Société</th>
+        <th>Contact</th>
+        <th>Adresse</th>
+        <th>Ville</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>COMMI</td>
+        <td>Pedro’s house</td>
+        <td>Pedro Afonso</td>
+        <td>67, Rue des Cinquante Otages</td>
+        <td>Nantes</td>
+      </tr>
+      <tr>
+        <td>DRACD</td>
+        <td>Table nantaise</td>
+        <td>Sven Ottlieb</td>
+        <td>54, rue Royale</td>
+        <td>Nantes</td>
+      </tr>
+      <tr>
+        <td>URIB</td>
+        <td>Verre à soi</td>
+        <td>Lino Rodriguez</td>
+        <td>6, Rue Jean Baptiste Lulli</td>
+        <td>Nantes</td>
+      </tr>
+      </tbody>
+    </table>
+
+  </article>
+  <article id="Q3b">
+    <p class="questions"> Question 3b. </p>
+    <p class="enonceQues"> "Combien y a-t-il de clients de région parisienne ?" </p>
+    <p class="reponsesComplete">
+      <span class="reponsesIntro"> >>>> </span>
+      Il y a 3 clients à Paris et 2 dans la région de Versailles, soit un total de 5 clients en région
+      parisienne. Il suffit de filtrer la colonne de l’attribut “ville” en cochant seulement les villes de Paris
+      et Versailles et nous obtenons le résultat ci-dessous. </p>
+
+    <table class="client-table">
+      <thead>
+      <tr>
+        <th>Code client</th>
+        <th>Société</th>
+        <th>Contact</th>
+        <th>Adresse</th>
+        <th>Ville</th>
+        <th>Code postal</th>
+        <th>Pays</th>
+        <th>Téléphone</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>ALYAD</td>
+        <td>Chez Bouxou</td>
+        <td>Alyssa Duranta</td>
+        <td>25, rue Mongolfier</td>
+        <td>Paris</td>
+        <td>75013</td>
+        <td>France</td>
+        <td>06.78.34.11.65</td>
+      </tr>
+      <tr>
+        <td>EASTC</td>
+        <td>Speedy plate</td>
+        <td>Ann Devon</td>
+        <td>67, avenue de l'Europe</td>
+        <td>Versailles</td>
+        <td>78000</td>
+        <td>France</td>
+        <td>06.30.59.84.10</td>
+      </tr>
+      <tr>
+        <td>FAMIA</td>
+        <td>ChefFamilla</td>
+        <td>Aria Cruz</td>
+        <td>265, boulevard Charonne</td>
+        <td>Paris</td>
+        <td>75012</td>
+        <td>France</td>
+        <td>06.42.34.22.66</td>
+      </tr>
+      <tr>
+        <td>FISSA</td>
+        <td>Une petite faim</td>
+        <td>Diego Roel</td>
+        <td>25, rue Lauriston</td>
+        <td>Paris</td>
+        <td>75016</td>
+        <td>France</td>
+        <td>06.47.55.60.10</td>
+      </tr>
+      <tr>
+        <td>GALED</td>
+        <td>Crêperiede la gare</td>
+        <td>Eduardo Saavedra</td>
+        <td>1 Rue De La Gare</td>
+        <td>Versailles</td>
+        <td>78000</td>
+        <td>France</td>
+        <td>06.42.34.22.65</td>
+      </tr>
+      </tbody>
+    </table>
+  </article>
+
+
+  <article id="Q3c">
+    <p class="questions"> Question 3c. </p>
+    <p class="enonceQues"> "Donnez l’adresse du fournisseur Marie Delamare?" </p>
+    <p class="reponsesComplete"><span class="reponsesIntro"> >>>> </span>
+      L’adresse du fournisseur Marie Delamare est le 22, rue H. Voiron.
+      Pour trouver cette adresse, il a fallu filtrer dans la colonne de l’attribut “Contact” de la relation
+      “Fournisseur" le nom de Marie Delamare, nous finissons par obtenir l’enregistrement avec
+      l’adresse associé au contact de Marie Delamare. </p>
+    <table class="client-table">
+      <thead>
+      <tr>
+        <th>No fournisseur</th>
+        <th>Société</th>
+        <th>Contact</th>
+        <th>Fonction</th>
+        <th>Adresse</th>
+        <th>Ville</th>
+        <th>Région</th>
+        <th>Code postal</th>
+        <th>Pays</th>
+        <th>Téléphone</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>27</td>
+        <td>Escargots Nouveaux</td>
+        <td>Marie Delamare</td>
+        <td>Chef des ventes</td>
+        <td>22 rue H.Voiron</td>
+        <td>Montceau</td>
+        <td></td>
+        <td>71300</td>
+        <td>France</td>
+        <td>85.57.00.07</td>
+      </tr>
+      </tbody>
+    </table>
+  </article>
+
+  <article id="Q3d">
+    <p class="questions"> Question 3d. </p>
+    <p class="enonceQues"> "Combien y a-t-il de fournisseurs en Amérique du Nord ? " </p>
+    <span class="reponsesIntro"> >>>> </span>
+    <p class="reponsesComplete">
+      En Amérique du Nord, il y a 7 fournisseurs. Pour trouver ces 7 fournisseurs on filtre dans la
+      colonne de l’attribut “Pays” de la relation “Fournisseur" les pays d’Amérique du nord ici les EtatsUnis
+      aussi
+      appelé USA ainsi que le Canada. Nous obtenons alors les enrengistrements des
+      fournisseurs d’Amérique du Nord.
+    </p>
+    <img class="imgTableau" src="/assets/img/Mission1/8.png"
+         alt="Tableau représentant la réponse à la question (Tableau Excel)">
+  </article>
+  <article id="Q3e">
+    <p class="questions"> Question 3e. </p>
+    <p class="enonceQues"> "Combien y a-t-il de pays dans l’UE autre que la France ?" </p>
+    <p class="reponsesComplete"><span class="reponsesIntro"> >>>> </span>
+      Il y a 11 pays dans l’UE autre que la France. Il suffit de filtrer la colonne de l’attribut pays de la
+      relation “Fournisseur" en sélectionnant uniquement les pays de l’Union Européenne autre que la
+      france : c’est à dire l’Allemagne, La Finlande, l’Espagne, les pays bas, la Suède, le Danemark et
+      l’Italie. On ne compte plus le Royaume-Uni ne faisant plus parti de l’Union européenne depuis
+      2020. </p>
+    <img class="imgTableau" src="/assets/img/Mission1/9.png"
+         alt="Tableau représentant la réponse à la question (Tableau Excel)">
+  </article>
+  <article id="Q3f">
+    <p class="questions"> Question 3f. </p>
+    <p class="enonceQues"> "Quelle est la fonction du contact fournisseur Ma maison ?" </p>
+    <p class="reponsesComplete"><span class="reponsesIntro"> >>>> </span>
+      La fonction du contact fournisseur “Ma maison” est Directeur du marketing. On filtre la
+      colonne de l’attribut “Société” de la relation “Fournisseur" en sélectionnant uniquement la
+      Société “Ma Maison” nous obtenons l’enrengistrement ci-dessous </p>
+    <table class="client-table">
+      <thead>
+      <tr>
+        <th>No fournisseur</th>
+        <th>Société</th>
+        <th>Contact</th>
+        <th>Fonction</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>25</td>
+        <td>Ma Maison</td>
+        <td>Jean-Guy Lauzon</td>
+        <td>Directeur du marketing</td>
+      </tr>
+      </tbody>
+    </table>
+  </article>
+  <article id="Q3g">
+    <p class="questions"> Question 3g. </p>
+    <p class="enonceQues"> "Quelle est la fonction de contact fournisseur la plus représentée ?" </p>
+    <p class="reponsesComplete"><span class="reponsesIntro"> >>>> </span>
+      La fonction du contact fournisseur la plus représentée sont les représentant(e)s. </p>
+    <img class="imgTableau" src="/assets/img/Mission1/10.png"
+         alt="Tableau représentant la réponse à la question (Tableau Excel)">
+  </article>
+  <article id="Q3h">
+    <p class="questions">Question 3h. </p>
+    <p class="enonceQues"> "Quels produits (nom, catégorie et prix) a commandé le client Mikal Pavbo ?" </p>
+    <p class="alerte"><span id="logo_alerte">⚠</span> Il n'existe pas de Mikal Pavbo, mais il y a bien un Mikal
+      Torin avec le code client
+      PAVBO</p>
+    <p class="reponsesComplete">
+      <span class="reponsesIntro"> >>>> </span>
+      Les produits que Mikal Pavbo a commandé sont :<br><br>
+      <span class="produits"> Aniseed Syrup </span> qui coûtent 9.17 euros et de catégorie 2 (Condiments),<br><br>
+      <span class="produits"> NuNuCa Nuß-Nougat-Crème  </span> qui coûtent 11,67 euros et de catégorie 3
+      (Desserts),<br><br>
+      <span class="produits"> Boston Crab Meat </span> qui coûtent 15,33 euros et de catégorie 8 (Poissons et
+      fruits de mer),<br><br>
+      <span class="produits"> Singaporean Hokkien Fried Mee </span>qui coûtent 11,67 euros et de catégorie 5(Pâtes
+      et
+      céréales),<br><br>
+      <span class="produits"> Raclette Courdavault  </span> qui coûtent 31,46 euros et de catégorie 4 (Produits
+      Laitiers)<br><br>
+      <span class="produits"> Wimmers gute Semmelknödel </span> qui coûtent 27,71 euros et de catégorie 5,<br><br>
+      <span class="produits"> Outback Lager </span> qui coûtent 12,50 euros et de catégorie 5 (Boissons),<br><br>
+      <span class="produits"> Mozzarella di Giovanni  </span> qui coûtent 29,00 euros et de catégorie 4 (Produits
+      laitiers),
+      <span class="produits"> Röd Kaviar </span> qui coûtent 12.5 euros et de catégorie 8 (Poissons et fruits de
+      mer), <br><br>
+      <span class="produits"> Lakkalikööri  </span> qui coûtent 15 euros et de catégorie 1 (Boissons).
+    </p>
+  </article>
+  <article id="Q3i">
+    <p class="questions"> Question 3i. </p>
+    <p class="enonceQues"> "Donnez l’offre de produits suédois." </p>
+    <p class="reponsesComplete"><span class="reponsesIntro"> >>>> </span>
+      Les dates des commandes du client MORIU sont : <br><br>
+      <img class="imgTableau" src="/assets/img/Mission1/11.png"
+           alt="Tableau représentant la réponse à la question (Tableau Excel)">
+      <br><br>
+      Pour identifier les produits suédois, nous avons d'abord consulté la colonne "Pays" dans
+      la relation "Fournisseur" afin de sélectionner la Suède. Nous avons ainsi trouvé les
+      numéros de fournisseurs 9 et 17. Ensuite, nous avons examiné la relation "Produit" pour
+      répertorier les produits associés à ces numéros de fournisseur (9 ou 17).
+    </p>
+  </article>
+  <article id="Q3j">
+    <p class="questions"> Question 3j. </p>
+    <p class="enonceQues"> "Quelles sont les dates des commandes du client MORIU ? " </p>
+    <p class="reponsesComplete"><span class="reponsesIntro"> >>>> </span>
+      Les dates des commandes du client MORIU sont : <br><br>
+      <img class="imgTableau" src="/assets/img/Mission1/12.png"
+           alt="Tableau représentant la réponse à la question (Tableau Excel)">
+      <br><br>
+      Pour trouver les dates de commandes du client MORIU, nous avons filtré la
+      colonne de l’attribut ”Code Client” de la relation <span class="bold_under">”Commande” </span>. En
+      séléctionnant le client MORJU
+      (Dans le fichier EXCEL le client MORIU n’existe pas) ainsi, nous obtenons tous les
+      enrengistrements associés aux dates de commandes du client MORJU.
+    </p>
+  </article>
+  <article id="Q3k">
+    <p class="questions"> Question 3k. </p>
+    <p> "Quelles sont les catégories de produit vendues par les fournisseurs Singapouriens ?" </p>
+    <p class="reponsesComplete"><span class="reponsesIntro"> >>>> </span>
+      Les catégories de produits proposées par les fournisseurs singapouriens comprennent
+      les boissons et les condiments. </p>
+  </article>
+  <article id="Q3l">
+    <p class="questions"> Question 3l. </p>
+    <p class="enonceQues"> "Est-ce qu’il y a dans la clientèle des clients qui n’ont pas passé de commande ?" </p>
+    <p class="reponsesComplete"><span class="reponsesIntro"> >>>> </span>
+      Il y a en tout 6 clients qui n’ont pas passé de commandes : </p>
+    <ul class="liste_ul">
+      <li> Isra Dubois</li>
+      <li> André Fonseca</li>
+      <li> Mariciée Gilles</li>
+      <li>Martin Fos</li>
+      <li>Abdel Duroc</li>
+      <li> Melvin thiot</li>
+    </ul>
+  </article>
+  <article id="Q3m">
+    <p class="questions"> Question 3m. </p>
+    <p class="enonceQues"> "Comment sont conditionnés les produits ?" </p>
+    <p class="reponsesComplete"><span class="reponsesIntro"> >>>> </span>
+      <span class="bold"> Catégorie 1 : </span>Les boissons.<br><br>
+      Les boissons sont disponibles dans divers contenants tels que des sacs , boîtes , bouteilles
+      ou bien canettes. <br><br><br><br>
+      <span class="bold"> Categorie 2 : </span>Les condiments <br><br>
+      Les condiments se trouvent dans des pots, boîtes ou bouteilles. <br><br> <br><br>
+      <span class="bold"> Catégorie 3 :</span> Les desserts <br><br>
+      Pour les desserts, on les retrouve sous forme de bouteilles, sacs , de cartons ou de pots <br><br> <br><br>
+      <span class="bold"> Catégorie 4 : </span>Les produits laitiers <br><br>
+      Les produits laitiers sont conditionnés en cartons et à l’unité <br><br> <br><br>
+      <span class="bold">Catégorie 5 :</span> Pâtes et céréales <br><br>
+      Les pâtes et céréales sont stockés dans des cartons, paquets ou sacs <br><br> <br><br>
+      <span class="bold">Catégorie 6 : </span>Viandes <br><br>
+      La viande est conservée en cartons, boîtes ou sous forme de sac contenant des saucisses. <br><br> <br><br>
+      <span class="bold">Catégorie 7 :</span> Produit secs<br><br>
+      Les produits secs sont emballés en cartons ou en boîtes.<br><br><br><br>
+      <span class="bold">  Catégorie 8 :</span> Poissons / fruits de mer<br><br>
+      Les poissons/fruits de mer sont conditionnés sous forme de cartons, boîtes ou contenant
+      en verre.</p> <br><br>
+  </article>
+  <p class="transition"> Après avoir répondu à la longue question 3, nous arrivons donc dans la dernière partie de la SAE : les deux
+    dernières questions, analysons la question 4..</p>
+
+  <article id="Q4">
+    <p class="questions"> Question 4 </p>
+    <p class="enonceQues"> On espère avoir des données de bonne qualité mais certaines analyses ont déjà mis en
+      évidence certains problèmes. </p>
+    <ul class="enonceQues">
+      <li> Regardez ces analyses.</li>
+      <li> Regardez également si dans certaines colonnes des différentes tables proposées, on peut relever
+        des incohérences ou des choix discutables.
+      </li>
+      <li> Repérez-et expliquez tout ce qui vous paraît incohérent.</li>
+    </ul>
+    <p class="reponsesComplete"><span class="reponsesIntro"> >>>> </span>
+      Dans la table des répartitions des fournisseurs par type de contact, nous pouvons
+      voir qu’il y avait 2 fois la fonction de représentant(e) (“represenatante” et
+      représentant(e)”) . Dans chef des ventes aussi il y a un espace qui différencie “chef
+      des ventes” et “Chef des ventes” entre le “des” et “ventes”
+      <br><br>
+      Du côté de la répartition des fournisseurs par ville, nous pouvons voir qu’il y a 2 fois
+      la ville de Sao Paulo au Brésil écrite de deux manières différentes : “São Paulo” et
+      “Sao Paulo” donc ce que l’on devrait faire est de permettre à la base de données
+      d’interdire la saisie de 2 villes identiques malgré les accents.
+      <br><br>
+      De même pour les Etats-Unis, il y a USA et Etats Unis comme mots qui sont identiques,
+      pareil pour l’Australie qui est mentionée en anglais et en français. Encore pareil pour le
+      Royaume-Uni qui est en doublon, l’un est inscrit avec un tiret et l’autre sans.
+      <br><br>
+      Enfin, nous avons détectés un problème d’accent avec le mot Suède qui est en
+      doublon : l’un est avec un accent grave et l’autre avec un accent aïgue.
+
+      Dans le graphe sur l’analyse sur la clientèle, il y a 2 fois la ville de Versailles qui
+      possède le même problème que dans les 2 tables, un souci de
+      saisie.</p>
+
+  </article>
+
+</section>
+
+<section class="BilanAMC">
+  <header>Proposition d'améliorations et conclusion</header>
+  <article class="Ameliorations">
+
+    <p class="questions">Propositions d'améliorations </p>
+    <p>Dans notre mission 1, nous avons, pour répondre à la question 5 proposés nombreuses améliorations pour que KDou
+      puisse bénéficier d'une base de données exploitable correctement et surtout sans erreur, les voicis :</p>
+    <ul>
+      <li> Normaliser les données, c’est-à-dire adapter le même format d’écriture pour les
+        données, les noms, les villes, les pays et les fonctions dans la base de données. Par
+        exemple, pour les noms de villes, il est important de décider si elles seront toutes écrites
+        en français ou dans leur langue locale. Il faudrait aussi enlever les espaces en début,
+        milieu et fin de chaîne de caractères afin de garantir une saisie uniforme.
+      </li>
+      <li> Nous avons également décelé une principale erreur commune aux documents de l’annexe qui sont
+        les soucis de doublons dû aux problèmes d’orthographe avec par exemple Sao Paulo sans
+        les accents, Versailles avec un ï, et le doublon des représentants dans l’annexe. Nous
+        pourrons régler ce problème très facilement en changeant dans les feuilles de Propriétés
+        les éléments distinctes. Aussi mettre ces données sur une seule ligne pourrait améliorer
+        l’organisation de ces données.
+      </li>
+    </ul>
+  </article>
+
+  <article class="Conclusion">
+    <p class="questions">Conclusion </p>
+    <p> En conclusion, nous avons pu constater avec cette SAE qu'en réalité, un logiciel comme Excel n'est pas
+      réellement optimisé pour stocker de très grande bases de données comme celle de KDou, bien qu'il le soit
+      pour des petites à moyenne quantités de données. Pour de telles quantités de données, il faudrait une
+      application beaucoup plus optimisées, afin de manipuler avec beaucoup + de précisions les données et les
+      besoins des clients, une application comme Microsoft Access serait donc parfait pour de tels besoins </p>
+  </article>
+
+</section>
+
+<footer>
+  <p>En collaboration avec KDou | © 2024</p>
+  <a  id ="zip" href="/assets/img/DOSSIER_COMPTE_Rendu.rar" download="DOSSIER_COMPTE_Rendu.zip">
+    Cliquez ici pour télécharger le dossier ZIP de toutes les missions
+  </a>
+</footer>
+</body>
+</html>

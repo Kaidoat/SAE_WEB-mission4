@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;800&display=swap');
+
+.poppins-medium {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.poppins-extrabold {
+  font-family: "Poppins", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+}
+
+/*Couleurs et types de texte*/
+
+*{
+  font-family: "Poppins", sans-serif;
+}
+
+
+.questions{
+  font-size:25px;
+  font-weight:bold;
+  color: red;
+}
+
+.enonceQues{
+  font-size:20px;
+  font-weight:bold;
+}
+
+.reponsesIntro{
+  font-size:16px;
+  font-weight: bold;
+}
+
+
+
+nav {
+  background-color: #89BA4E;
+  font-size: 1.25rem; /* Taille de la police en rem pour qu’elle soit scalable */
+  padding: 0.75rem; /* Padding en rem pour ajustement automatique */
+  border: 0;
+  display: flex;
+  width: 100%;
+  box-sizing: border-box;
+  justify-content: center;
+  position: relative; /* Nécessaire pour l'élément #acc en position absolue */
+}
+
+/* Conteneur des liens de navigation */
+#link {
+  display: flex;
+  gap: 1rem; /* Espacement entre les liens en rem */
+}
+
+#link > a {
+  color: #448D76;
+  text-decoration: none;
+  padding: 0.5rem 1rem; /* Padding en rem pour ajustement fluide */
+}
+
+/* Style pour le titre dans la navigation */
+#titreM1 {
+  padding: 0.5rem 1.5rem 1.5rem 0; /* Padding en rem pour plus de flexibilité */
+}
+
+/* Style pour les liens dans #page */
+#link > #page {
+  padding: 0.75rem 1rem; /* Ajustement du padding */
+  color: #FDFEFB;
+  border-bottom: 0.2rem solid #FDFEFB; /* Bordure en rem */
+}
+
+/* Style global du body */
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  font-family: "Source Sans", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #EFF7DE;
+}
+
+/* Style pour les sections et les en-têtes */
+section header {
+  font-size: 1.5em;
+  font-weight: bold;
+  text-align: left;
+}
+section {
+  width: 80%;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  border: 1px solid rgb(200, 200, 200);
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+#acc {
+  position: absolute;
+  left: 2%; /* Distance en % pour s'ajuster à la taille de l'écran */
+  top: 1rem;
+  max-width: 70px; /* Taille maximale pour éviter que l’image soit trop grande */
+  height: auto; /* Maintient le ratio de l'image */
+}
+
+footer{
+  background-color: #89BA4E; /* Même couleur de fond que la barre de navigation */
+  color: #448D76;
+  padding: 1.25rem 2%; /* Padding en rem pour s’adapter à toutes les tailles d’écrans */
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  font-size: 1rem;
+
+}
+
+#zip{
+  color: #448D76;
+}
+
+
+
+
+/* Media query pour écrans de taille moyenne et petites tailles */
+@media (max-width: 768px) {
+  nav {
+    padding: 0.5rem;
+    flex-direction: column; /* Stacker les éléments verticalement sur petit écran */
+    align-items: center;
+  }
+
+  #link {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  #link > a {
+    font-size: 1rem;
+    padding: 0.5rem;
+  }
+
+  #acc {
+    left: 10px; /* Réduit l'espacement depuis le bord pour les petits écrans */
+    top: 5px;
+  }
+}
+
+/* Media query pour écrans plus petits */
+@media (max-width: 768px) {
+  #footer-links {
+    flex-direction: column; /* Liens en colonne sur les petits écrans */
+    gap: 0.5rem;
+  }
+
+  footer p {
+    font-size: 0.8rem; /* Réduit légèrement la taille du texte */
+  }
+}
+
